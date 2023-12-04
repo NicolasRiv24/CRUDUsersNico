@@ -80,8 +80,9 @@ public class CrudUsersNicolasTest {
                 .log().all();
 
     }
-    @Test getUnexistingUser(){
-        given().when().get("https://reqres.in/api/users/24").then().statusCode(204);
+    @Test
+    void getUnexistingUser(){
+        given().when().get("https://reqres.in/api/users/24").then().statusCode(404);
 
     }
 }
