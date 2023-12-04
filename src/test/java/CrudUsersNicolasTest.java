@@ -70,6 +70,18 @@ public class CrudUsersNicolasTest {
                 .body("data.avatar", isA(String.class))
                 .body("support.url", isA(String.class))
                 .body("support.text", isA(String.class))
+                .body("data.id",equalTo(2))
+                .body("data.email",equalTo("janet.weaver@reqres.in"))
+                .body("data.first_name", equalTo("Janet"))
+                .body("data.last_name", equalTo("Weaver"))
+                .body("data.avatar", equalTo("https://reqres.in/img/faces/2-image.jpg"))
+                .body("support.url", equalTo("https://reqres.in/#support-heading"))
+                .body("support.text", equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"))
                 .log().all();
+
+    }
+    @Test getUnexistingUser(){
+        given().when().get("https://reqres.in/api/users/24").then().statusCode(204);
+
     }
 }
